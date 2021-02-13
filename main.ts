@@ -7,9 +7,11 @@ function showNumber2 (num2: number) {
     clearDisplay()
     row = num2 / 5
     column = num2 % 5
-    for (let i = 0; i <= row; i++) {
-        satırÇiz(i)
-        for (let j = 0; j <= column; j++) {
+    for (let index = 0; index <= row - 1; index++) {
+        satırÇiz(index)
+    }
+    for (let i = 0; i <= column; i++) {
+        for (let j = 0; j <= row; j++) {
             led.plot(i, j)
         }
     }
