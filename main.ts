@@ -56,9 +56,10 @@ let remainder = 0
 let counter = 0
 let num = 0
 num = -1
+counter = -1
 basic.forever(function () {
-    led.plot(counter - 1, 4)
+    led.plot(counter - 2, 4)
     basic.pause(200)
-    led.unplot(counter - 1, 4)
+    led.unplot(counter - 2, 4)
     basic.pause(200)
 })
