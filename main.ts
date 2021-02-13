@@ -1,12 +1,23 @@
+function increase (amount: number) {
+    num = num + amount
+    counter = num / 20
+    remainder = num % 20
+}
 function satırÇiz (num: number) {
     for (let j = 0; j <= 4; j++) {
         led.plot(j, num)
     }
 }
+function decrease (amount: number) {
+    num = num - amount
+    counter = num / 20
+    remainder = num % 20
+}
 function showNumber2 (num2: number) {
     clearDisplay()
     row = num2 / 5
     column = num2 % 5
+    // çizilmesi gerekli satırlar
     for (let index = 0; index <= row - 1; index++) {
         satırÇiz(index)
     }
@@ -14,6 +25,10 @@ function showNumber2 (num2: number) {
         for (let j = 0; j <= row; j++) {
             led.plot(i, j)
         }
+    }
+    // en alttaki 20'nin katı olan kısımlar
+    for (let index = 0; index <= counter - 2; index++) {
+        led.plot(index, 4)
     }
 }
 function clearDisplay () {
@@ -24,23 +39,26 @@ function clearDisplay () {
     }
 }
 input.onButtonPressed(Button.A, function () {
-    num = num - 1
-    showNumber2(num)
+    decrease(1)
+    showNumber2(remainder)
 })
 input.onButtonPressed(Button.AB, function () {
-    num = num + 3
-    showNumber2(num)
+    increase(3)
+    showNumber2(remainder)
 })
 input.onButtonPressed(Button.B, function () {
-    num = num + 1
-    showNumber2(num)
+    increase(1)
+    showNumber2(remainder)
 })
-function showNumber (num2: number) {
-    column = num2 / 5
-    row = num2 % 5
-    led.plot(row, column)
-}
 let column = 0
 let row = 0
+let remainder = 0
+let counter = 0
 let num = 0
 num = -1
+basic.forever(function () {
+    led.plot(counter - 1, 4)
+    basic.pause(200)
+    led.unplot(counter - 1, 4)
+    basic.pause(200)
+})
