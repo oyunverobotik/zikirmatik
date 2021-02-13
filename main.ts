@@ -42,14 +42,6 @@ input.onButtonPressed(Button.A, function () {
     decrease(1)
     showNumber2(remainder)
 })
-input.onButtonPressed(Button.AB, function () {
-    increase(3)
-    showNumber2(remainder)
-})
-input.onButtonPressed(Button.B, function () {
-    increase(1)
-    showNumber2(remainder)
-})
 let column = 0
 let row = 0
 let remainder = 0
@@ -57,6 +49,14 @@ let counter = 0
 let num = 0
 num = -1
 counter = -1
+basic.forever(function () {
+    increase(1)
+    showNumber2(remainder)
+    basic.pause(500)
+    if (num >= 100) {
+        num = 0
+    }
+})
 basic.forever(function () {
     led.plot(counter - 2, 4)
     basic.pause(200)
