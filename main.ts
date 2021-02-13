@@ -27,6 +27,10 @@ input.onButtonPressed(Button.A, function () {
     num = num - 1
     showNumber2(num)
 })
+input.onButtonPressed(Button.AB, function () {
+    num = num + 3
+    showNumber2(num)
+})
 input.onButtonPressed(Button.B, function () {
     num = num + 1
     showNumber2(num)
